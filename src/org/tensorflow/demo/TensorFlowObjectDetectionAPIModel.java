@@ -192,6 +192,7 @@ public class TensorFlowObjectDetectionAPIModel implements Classifier {
               outputLocations[4 * i + 2] * inputSize);
       pq.add(
           new Recognition("" + i, labels.get((int) outputClasses[i]), outputScores[i], detection));
+
     }
 
     final ArrayList<Recognition> recognitions = new ArrayList<Recognition>();

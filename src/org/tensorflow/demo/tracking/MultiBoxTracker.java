@@ -188,26 +188,7 @@ public class MultiBoxTracker {
       final float cornerSize = Math.min(trackedPos.width(), trackedPos.height()) / 8.0f;
       canvas.drawRoundRect(trackedPos, cornerSize, cornerSize, boxPaint);
 
-      //final String labelString =
-      //    !TextUtils.isEmpty(recognition.title)
-      //        ? String.format("%s %.2f", recognition.title, recognition.detectionConfidence)
-      //        : String.format("%.2f", recognition.detectionConfidence);
-      String labelString =
-              !TextUtils.isEmpty(recognition.title)
-                ? recognition.title
-                : "Item";
-
-      // Update certain controlled items
-      // Prices from https://www.numbeo.com/cost-of-living/country_result.jsp?country=Kenya
-      if (labelString == "bottle") {
-        labelString = String.format("Item %d: Coke, 53.00 KSh", itemNum++);
-      } else if (labelString == "cup") {
-        labelString = String.format("Item %d: Pesticide, 610.00 KSh", itemNum++);
-      } else if (labelString == "suitcase") {
-        labelString = String.format("Item %d: Flour, 125.00 KSh", itemNum++);
-      } else {
-        labelString = String.format("Item %d: est. %.2f KSh", itemNum++, recognition.detectionConfidence * 300);
-      }
+      String labelString = String.format("%s: %.2f", recognition.title, recognition.detectionConfidence);
       borderedText.drawText(canvas, trackedPos.left + cornerSize, trackedPos.bottom, labelString);
     }
   }
